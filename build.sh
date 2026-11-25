@@ -18,16 +18,11 @@ mkdir "$BUILD_DIR"
 cd "$BUILD_DIR"
 
 echo "=== Шаг 1: Конфигурация проекта через CMake ==="
-
-# Задаем путь к хостовой (Linux x64) версии Qt для инструментов сборки
-QT_HOST_DIR="${QT_PATH}/${QT_VERSION}/gcc_64"
-
 cmake .. -G Ninja \
     -DCMAKE_TOOLCHAIN_FILE="${QT_CMAKE_TOOLCHAIN}" \
     -DANDROID_ABI="arm64-v8a" \
     -DANDROID_PLATFORM="android-34" \
-    -DCMAKE_BUILD_TYPE="Debug" \
-    -DQT_HOST_PATH="${QT_HOST_DIR}"
+    -DCMAKE_BUILD_TYPE="Debug"
 
 echo "=== Шаг 2: Компиляция и сборка APK ==="
 # Цель 'apk' заставит CMake не просто скомпилировать бинарники, 
