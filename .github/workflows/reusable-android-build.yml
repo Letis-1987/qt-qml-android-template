@@ -1,7 +1,7 @@
-name: Build Android APK
+name: Build Android APK (reusable)
 
 on:
-  workflow_dispatch:
+  workflow_call:
 
 jobs:
   build:
