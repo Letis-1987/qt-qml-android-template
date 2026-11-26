@@ -2,7 +2,7 @@ name: Build Android APK
 
 on:
   workflow_dispatch:
-    
+
 jobs:
   run-build:
     uses: letis-1987/qt-qml-android-template/.github/workflows/reusable-android-build.yml@main # Тут можно указать ветку, тэг или хэш коммита

@@ -1,0 +1,30 @@
+name: Init from Template
+# При первом коммите в репозитрий унаследованный от этого шаблона - удаляются не нужные workfolw-файлы.
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    # Выполняется только в дочерних проектах, но не в самом шаблоне
+    if: github.repository != 'letis-1987/qt-qml-android-template'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Remove template-only workflows
+        run: |
+          git rm -f .github/workflows/reusable-android-build.yml .github/workflows/init-template.yml
+
+      - name: Commit cleanup
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@://github.com"
+          git commit -m "chore: clean up template workflows"
+          git push
