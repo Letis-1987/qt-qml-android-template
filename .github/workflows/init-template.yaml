@@ -20,7 +20,7 @@ jobs:
 
       - name: Remove template-only workflows
         run: |
-          git rm -f .github/workflows/reusable-android-build.yml .github/workflows/init-template.yml
+          git rm -f .github/workflows/reusable-android-build.yaml .github/workflows/init-template.yaml
 
       - name: Commit cleanup
         run: |
